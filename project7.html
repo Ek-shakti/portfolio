@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project7</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: burlywood;
+
+    }
+
+    #box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        margin-top: 30px;
+        height: 500px;
+        width: 270px;
+        background-color: bisque;
+    }
+
+    #captcha {
+        height: 40px;
+        width: 60px;
+        border: 2px solid black;
+        color: black;
+    }
+</style>
+
+<body>
+    <div id="box">
+        <label for="email"> Email</label>
+        <input id="email" placeholder="Enter your Email" /><br>
+
+        <label for="number"> Phone no.</label>
+        <input id="number" type="number" placeholder="Enter  phone number" /><br>
+
+        <label for="password"> password</label>
+        <input id="p" type="password" placeholder="Enter your password" /><br>
+
+        <label for="password"> password</label>
+        <input id="cp" type="password" placeholder="confirm password" /><br>
+
+        <div id="captcha"></div><br>
+        <input id="capValue" placeholder="Enter above captcha" /><br>
+        <button submit id="sub" disabled>submit</button>
+    </div>
+
+
+
+    <script src="project7.js"></script>
+</body>
+
+</html>
