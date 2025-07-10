@@ -1,31 +1,44 @@
-fetch('https://dummyjson.com/products')
-    .then(Response => Response.json())
-    .then(characters => {
-        // renderProducts(characters.products)
-        console.log(characters)
+function fetchClothes() {
+    fetch("https://fakestoreapi.com/products")
+        .then(response => response.json())
+        .then(products => {
+            const list = document.getElementById("productList");
+            list.innerHTML = ""; // clear previous list
 
-    });
-const cardContainer = document.querySelector('#div')
-function renderProducts(products) {
-    products.forEach(product => {
+            // Filter only clothing products
+            const clothes = products.filter(item => item.category.includes("clothing"));
 
-        const div = document.createElement('div')
-        const image = document.createElement('img')
-        const price = document.createElement('h3')
+            clothes.forEach(item => {
+                const li = document.createElement("li");
+                li.className = "bg-white p-4 rounded shadow flex items-center gap-4";
 
-        div.classList = 'card'
-        image.classList = 'card-img'
-        price.classList = 'card-price'
+                // Image
+                const img = document.createElement("img");
+                img.src = item.image;
+                img.width = 60;
+                img.height = 60;
+                img.className = "object-contain";
 
-        price.textContent = `price: ${products.price}`
+                // Text
+                const textWrapper = document.createElement("div");
+                const title = document.createElement("h3");
+                title.textContent = item.title;
+                title.className = "font-semibold text-sm";
 
-        let c = image.setAttribute("src", products.images)
+                const price = document.createElement("p");
+                price.textContent = `$${item.price}`;
+                price.className = "text-xs text-gray-600";
 
-        div.appendChild(image)
-        div.appendChild(price)
-        cardContainer.appendChild(div)
+                textWrapper.appendChild(title);
+                textWrapper.appendChild(price);
 
-    });
-
+                // Add to list
+                li.appendChild(img);
+                li.appendChild(textWrapper);
+                list.appendChild(li);
+            });
+        })
+        .catch(err => {
+            console.error("Error fetching clothes:", err);
+        });
 }
-
