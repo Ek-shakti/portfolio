@@ -7,76 +7,47 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div>
-        <table>
-            <thead>
-                <input>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <button value="7">7</button>
-                    </td>
-                    <td>
-                        <button value="8">8</button>
-                    </td>
-                    <td>
-                        <button value="9">9</button>
-                    </td>
-                    <td>
-                        <button value="+">+</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <button value="4">4</button>
-                    </td>
-                    <td>
-                        <button value="5">5</button>
-                    </td>
-                    <td>
-                        <button value="6">6</button>
-                    </td>
-                    <td>
-                        <button value="-">-</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <button>1</button>
-                    </td>
-                    <td>
-                        <button>2</button>
-                    </td>
-                    <td>
-                        <button>3</button>
-                    </td>
-                    <td>
-                        <button>*</button>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <button>/</button>
-                    </td>
-                    <td>
-                        <button>0</button>
-                    </td>
-                    <td>
-                        <button>%</button>
-                    </td>
-                    <td>
-                        <button>=</button>
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-xs">
+    <div class="mb-4">
+      <input 
+        type="text" 
+        id="display" 
+        class="w-full text-right text-2xl border border-gray-300 rounded px-3 py-2 focus:outline-none bg-gray-50" 
+        readonly 
+      />
     </div>
+    <div class="grid grid-cols-4 gap-3">
+      <!-- Row 1 -->
+      <button class="btn bg-gray-200" onclick="clearDisplay()">C</button>
+      <button class="btn bg-gray-200" onclick="deleteLast()">⌫</button>
+      <button class="btn bg-gray-200" onclick="appendValue('%')">%</button>
+      <button class="btn bg-blue-500 text-white" onclick="appendValue('/')">÷</button>
+      
+      <!-- Row 2 -->
+      <button class="btn" onclick="appendValue('7')">7</button>
+      <button class="btn" onclick="appendValue('8')">8</button>
+      <button class="btn" onclick="appendValue('9')">9</button>
+      <button class="btn bg-blue-500 text-white" onclick="appendValue('*')">×</button>
+      
+      <!-- Row 3 -->
+      <button class="btn" onclick="appendValue('4')">4</button>
+      <button class="btn" onclick="appendValue('5')">5</button>
+      <button class="btn" onclick="appendValue('6')">6</button>
+      <button class="btn bg-blue-500 text-white" onclick="appendValue('-')">−</button>
+      
+      <!-- Row 4 -->
+      <button class="btn" onclick="appendValue('1')">1</button>
+      <button class="btn" onclick="appendValue('2')">2</button>
+      <button class="btn" onclick="appendValue('3')">3</button>
+      <button class="btn bg-blue-500 text-white" onclick="appendValue('+')">+</button>
+      
+      <!-- Row 5 -->
+      <button class="btn col-span-2" onclick="appendValue('0')">0</button>
+      <button class="btn" onclick="appendValue('.')">.</button>
+      <button class="btn bg-green-500 text-white" onclick="calculate()">=</button>
+    </div>
+  </div>
 
 
     <script src="project4.js"></script>
