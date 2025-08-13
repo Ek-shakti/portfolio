@@ -2,106 +2,231 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <title>Document</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <title>Portfolio - Eknist Kishore Shakti</title>
 
   <style>
+    /* ===== Animated  using css ===== */
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      position: relative;
+      background: linear-gradient(270deg, #fce7f3, #f9e1f7, #fce7f3);
+      background-size: 600% 600%;
+      animation: bg-pan 20s ease-in-out infinite;
+    }
+
+    @keyframes bg-pan {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .bg-anim {
+      position: fixed;
+      inset: -10vmax;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-anim .blob {
+      position: absolute;
+      width: 55vmax;
+      height: 55vmax;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .blob.one {
+      background: radial-gradient(circle at 30% 30%, #ff4cc3, transparent 60%);
+      top: -10%;
+      left: -6%;
+      animation: drift1 24s ease-in-out infinite alternate;
+    }
+
+    .blob.two {
+      background: radial-gradient(circle at 70% 70%, #6a0dad, transparent 60%);
+      bottom: -15%;
+      right: -10%;
+      animation: drift2 28s ease-in-out infinite alternate;
+    }
+
+    .blob.three {
+      background: radial-gradient(circle at 40% 60%, #440e44, transparent 60%);
+      top: 20%;
+      right: 25%;
+      opacity: 0.30;
+      animation: drift3 32s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 {
+      from {
+        transform: translate(-4%, 0) scale(1);
+      }
+
+      to {
+        transform: translate(6%, 4%) scale(1.08);
+      }
+    }
+
+    @keyframes drift2 {
+      from {
+        transform: translate(4%, -2%) scale(1.02);
+      }
+
+      to {
+        transform: translate(-6%, 6%) scale(0.96);
+      }
+    }
+
+    @keyframes drift3 {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(4%, -6%) scale(1.05);
+      }
+    }
+
+
     .box {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      height: 50px;
-      width: 150px;
-      background-color: black;
-      color: aliceblue;
-      border-radius: 7px;
+      justify-content: center;
+      flex-direction: column;
+      height: 3.5rem;
+      width: 11rem;
+      border-radius: 0.75rem;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .15);
+      background: linear-gradient(135deg, #6a0dad, #440e44);
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease, filter .3s ease;
+    }
 
+    .box:hover {
+      transform: translateY(-4px) scale(1.05);
+      background: linear-gradient(135deg, #440e44, #ff4cc3);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, .28);
+      filter: saturate(1.1);
+    }
+
+    .box a {
+      color: inherit;
+      text-decoration: none;
     }
   </style>
-
 </head>
 
-<body class="bg-[#f9e1f7]">
-  <header class="bg-white shadow-md p-6 text-center">
-    <h1 class="text-3xl font-bold">Eknist Kishore shakti</h1>
-    <p class="text-gray-500">A showcase of my work</p>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Animated background layer -->
+  <div class="bg-anim">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+  </div>
+
+  <!-- Header / Hero -->
+  <header class="bg-white/80 backdrop-blur-md shadow-md p-10 text-center sticky top-0 z-40">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-[#440e44]" data-aos="fade-down">Eknist Kishore Shakti</h1>
+    <p class="text-gray-700 mt-2 text-lg" data-aos="fade-up" data-aos-delay="100">A showcase of my work</p>
   </header>
-  <!-- <div class="flex items-center gap-3 "> -->
 
-
-  <div
-    class="h-[300px] w-[500px] rounded-[30px] bg-[#440e44] mx-auto mb-6 flex flex-col items-center justify-center text-center text-white px-6">
-    <h2 class="text-3xl font-bold mb-2">About Me</h2>
-    <p class="text-sm text-gray-200">
+  <!-- About Me -->
+  <section
+    class="max-w-4xl mx-auto mt-10 md:mt-14 p-8 md:p-10 rounded-3xl bg-gradient-to-br from-[#440e44] to-[#6a0dad] text-center text-white shadow-lg"
+    data-aos="fade-right">
+    <h2 class="text-3xl font-bold mb-4">About Me</h2>
+    <p class="text-base leading-relaxed text-gray-200">
       Hi! I'm a passionate web developer who loves creating clean, responsive, and user-friendly websites. I enjoy
       working with modern tools like JavaScript, Tailwind CSS, and React to bring ideas to life.
     </p>
-  </div>
-
-
-
-  </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-      <div class="box "> <a href="project9.html">RealEstate</a> </div>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <span class="bg-white/20 px-4 py-1 rounded-full text-sm">HTML</span>
+      <span class="bg-white/20 px-4 py-1 rounded-full text-sm">CSS</span>
+      <span class="bg-white/20 px-4 py-1 rounded-full text-sm">JavaScript</span>
+      <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Tailwind CSS</span>
+      <span class="bg-white/20 px-4 py-1 rounded-full text-sm">React</span>
     </div>
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-      <div class="box "> <a href="Todo.html">Todo list</a> </div>
+  </section>
+
+  <!-- Projects grid (links & texts unchanged) -->
+  <main class="max-w-6xl mx-auto mt-12 md:mt-14 px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center"
+      data-aos="zoom-in">
+      <div class="box"><a href="project9.html">RealEstate</a></div>
     </div>
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project2.html">Background Color</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="80">
+      <div class="box"><a href="Todo.html">Todo list</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project3.html">Digital Clock</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="120">
+      <div class="box"><a href="project2.html">Background Color</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project4.html">calculator</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="160">
+      <div class="box"><a href="project3.html">Digital Clock</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project5.html">Image Slider</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="200">
+      <div class="box"><a href="project4.html">Calculator</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project6.html">Timer</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="240">
+      <div class="box"><a href="project5.html">Image Slider</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project7.html">Registration Form</a> </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="280">
+      <div class="box"><a href="project6.html">Timer</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-      <div class="box"> <a href="project8.html">Traffic Light </a></div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="320">
+      <div class="box"><a href="project7.html">Registration Form</a></div>
     </div>
-
-    <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition">
-
-
-      <div class="box"> <a href="api.html">Fetch Data </a></div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="360">
+      <div class="box"><a href="project8.html">Traffic Light</a></div>
     </div>
+    <div class="bg-white/90 rounded-xl shadow-md hover:shadow-2xl transition p-8 flex justify-center" data-aos="zoom-in"
+      data-aos-delay="400">
+      <div class="box"><a href="api.html">Fetch Data</a></div>
+    </div>
+  </main>
 
-
-
-
-  </div>
-
-
-  <footer class="bg-white text-center p-4 mt-10 border-t">
-    <p class="text-sm text-gray-500"> shaktieknist@gmail.com</p>
+  <!-- Footer -->
+  <footer class="bg-white/80 backdrop-blur text-center p-6 mt-16 border-t" data-aos="fade-up">
+    <p class="text-gray-700 text-sm">shaktieknist@gmail.com</p>
   </footer>
 
+  <!-- AOS script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
 </body>
 
 </html>
